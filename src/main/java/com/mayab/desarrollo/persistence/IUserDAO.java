@@ -10,5 +10,5 @@ public interface IUserDAO {
     public boolean deleteUser(int id);
     public Usuario findById(int id);
     public Usuario updatePass(Usuario usuario, String NContra);
-
+    public Usuario findByName(String nombre);
 }

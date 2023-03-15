@@ -9,6 +9,16 @@ import javax.persistence.Table;
 @Entity
 @Table(name="Usuarios")
 public class Usuario {
+	@Override
+	public String toString() {
+		return "Usuario{" +
+				"id=" + id +
+				", nombre='" + nombre + '\'' +
+				", password='" + password + '\'' +
+				", email='" + email + '\'' +
+				'}';
+	}
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id", unique = true, nullable = false)
