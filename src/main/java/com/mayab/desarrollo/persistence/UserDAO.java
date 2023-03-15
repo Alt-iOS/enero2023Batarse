@@ -10,7 +10,7 @@ public class UserDAO implements IUserDAO{
     public List<Usuario> findAll() {
         Session session = HibernateUtil.getSessionFactory().openSession();
         List<Usuario> list = session.createQuery("from Usuario").list();
-        HibernateUtil.shutdown();
+        session.close();
         return list;
     }
 
@@ -20,7 +20,7 @@ public class UserDAO implements IUserDAO{
         session.beginTransaction();
         int id = (int) session.save(usuario);
         session.getTransaction().commit();
-        HibernateUtil.shutdown();
+        session.close();
         return id;
     }
 
@@ -31,7 +31,7 @@ public class UserDAO implements IUserDAO{
         Usuario u = session.get(Usuario.class, id);
         session.delete(u);
         session.getTransaction().commit();
-        HibernateUtil.shutdown();
+        session.close();
         return true;
     }
 
@@ -40,7 +40,7 @@ public class UserDAO implements IUserDAO{
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
         Usuario u = session.get(Usuario.class, id);
-        HibernateUtil.shutdown();
+        session.close();
         return u;
     }
 
@@ -51,7 +51,7 @@ public class UserDAO implements IUserDAO{
         Usuario toUpdate = session.get(Usuario.class, usuario.getId());
         toUpdate.setPassword(NContra);
         session.getTransaction().commit();
-        HibernateUtil.shutdown();
+        session.close();
         return toUpdate;
     }
 }
