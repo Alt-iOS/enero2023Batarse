@@ -1,7 +1,10 @@
 package com.mayab.desarrollo.persistence;
 
 import com.mayab.desarrollo.entities.Usuario;
+
+import javax.persistence.NoResultException;
 import javax.persistence.Query;
+
 import org.hibernate.Session;
 import com.mayab.desarrollo.main.HibernateUtil;
 import java.util.List;
@@ -58,11 +61,29 @@ public class UserDAO implements IUserDAO{
     @Override
     public Usuario findByName(String nombre){
         Session session = HibernateUtil.getSessionFactory().openSession();
-        Query qry = session.createQuery("FROM Usuario WHERE nombre=:name")
-                .setParameter("name", nombre);
-        Usuario user = (Usuario) qry.getSingleResult();
-        user.toString();
-        session.close();
-        return user;
+        try {
+            Query qry = session.createQuery("FROM Usuario WHERE nombre=:name")
+                    .setParameter("name", nombre);
+            Usuario user = (Usuario) qry.getSingleResult();
+            user.toString();
+            session.close();
+            return user;
+        }catch (NoResultException e){
+            return null;
+        }
+    }
+    @Override
+    public Usuario findByEmail(String email){
+        try{
+            Session session = HibernateUtil.getSessionFactory().openSession();
+            Query qry = session.createQuery("FROM Usuario WHERE email=:email")
+                    .setParameter("email", email);
+            Usuario user = (Usuario) qry.getSingleResult();
+            user.toString();
+            session.close();
+            return user;
+        }catch (NoResultException e){
+            return null;
+        }
     }
 }

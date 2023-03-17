@@ -27,7 +27,8 @@ public class Usuario {
 	private String nombre;
 	@Column(name = "password", nullable = false, length = 100)
 	private String password;
-	
+	@Column(name = "email", nullable = false, length = 100)
+	private String email;
 	
 	
 	public Usuario(int id, String nombre, String password, String email) {
@@ -64,6 +65,6 @@ public class Usuario {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	private String email;
+
 
 }

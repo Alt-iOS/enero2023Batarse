@@ -19,4 +19,21 @@ public class UsuarioServicio {
         }
         return result;
     }
+
+    public boolean createUser(String username, String pass, String email){
+        Usuario usuario = new Usuario();
+        usuario.setPassword(pass);
+        usuario.setEmail(email);
+        usuario.setNombre(username);
+        if (dao.findByEmail(email)==null &&  dao.findByName(username)==null){
+            dao.createUser(usuario);
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+
+
 }

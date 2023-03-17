@@ -50,8 +50,13 @@ public class Test {
 		user2.setPassword("password");
 		user2.setEmail("test@servicio.com");
 		//dao.createUser(user2);
+		//test for login from UsuarioServicio
 		UsuarioServicio usuarioServicio = new UsuarioServicio(dao);
-		boolean isLogin = usuarioServicio.login("UsuarioUNICO", "password");
-		System.out.println("Result = "+ isLogin);
+		//boolean isLogin = usuarioServicio.login("UsuarioUNICO", "password");
+		//System.out.println("Result = "+ isLogin);
+		//test for servicio create User
+		//boolean isCreated = usuarioServicio.createUser(user2.getNombre(), user2.getPassword(), user2.getEmail());
+		//System.out.println("is created =" + isCreated);
+
 	}
 }
