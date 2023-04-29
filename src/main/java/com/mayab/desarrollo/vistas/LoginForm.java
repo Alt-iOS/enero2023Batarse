@@ -18,8 +18,8 @@ import com.mayab.desarrollo.servicios.UsuarioServicio;
 public class LoginForm extends JFrame implements ActionListener  
 {  
     //initialize button, panel, label, and text field  
-    JButton b1;  
-    JPanel newPanel;  
+    JButton b1, b2;
+    JPanel newPanel;
     JLabel userLabel, passLabel;  
     final JTextField  textField1, textField2;  
       
@@ -43,23 +43,33 @@ public class LoginForm extends JFrame implements ActionListener
           
         //create submit button  
         b1 = new JButton("SUBMIT"); //set label to button  
-          
+
+        //create change psswd button
+        b2 = new JButton("CHANGE PASSWORD");
+
         //create panel to put form elements  
         newPanel = new JPanel(new GridLayout(3, 1));  
         newPanel.add(userLabel);    //set username label to panel  
         newPanel.add(textField1);   //set text field to panel  
         newPanel.add(passLabel);    //set password label to panel  
         newPanel.add(textField2);   //set text field to panel  
-        newPanel.add(b1);           //set button to panel  
+        newPanel.add(b1);           //set button to panel
+        newPanel.add(b2);           //set change psswd button to panel
           
         //set border to panel   
         add(newPanel, BorderLayout.CENTER);  
           
         //perform action on button click   
-        b1.addActionListener(this);     //add action listener to button  
+        b1.addActionListener(this);     //add action listener to button
+        b2.addActionListener(e -> selectionButtonPressed());
         setTitle("LOGIN FORM");         //set title to the login form  
-    }  
-      
+    }
+
+    private void selectionButtonPressed() {
+        ChangePasswordForm form = new ChangePasswordForm();
+        form.setVisible(true);
+    }
+
     //define abstract method actionPerformed() which will be called on button click   
     public void actionPerformed(ActionEvent ae)     //pass action listener as a parameter  
     {  

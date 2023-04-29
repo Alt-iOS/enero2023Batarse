@@ -3,6 +3,8 @@ package com.mayab.desarrollo.servicios;
 import com.mayab.desarrollo.entities.Usuario;
 import com.mayab.desarrollo.persistence.UserDAO;
 
+import java.util.Objects;
+
 public class UsuarioServicio {
 
     private UserDAO dao;
@@ -30,6 +32,18 @@ public class UsuarioServicio {
             return true;
         }
         else {
+            return false;
+        }
+    }
+
+    public boolean changePassword(String name, String oldPass, String newPass){
+        Usuario usuario;
+        if(login(name, oldPass)){
+            usuario = dao.findByName(name);
+            dao.updatePass(usuario, newPass);
+            return true;
+        }
+        else{
             return false;
         }
     }
