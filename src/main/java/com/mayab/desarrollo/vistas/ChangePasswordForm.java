@@ -51,7 +51,7 @@ public class ChangePasswordForm extends JFrame implements ActionListener{
         b2 = new JButton("CANCEL");
 
         //create panel to put form elements
-        newPanel = new JPanel(new GridLayout(3, 1));
+        newPanel = new JPanel(new GridLayout(4, 1));
         newPanel.add(userLabel);    //set username label to panel
         newPanel.add(textField1);   //set text field to panel
         newPanel.add(oldPassLabel);    //set old password label to panel
