@@ -95,7 +95,15 @@ public class LoginForm extends JFrame implements ActionListener
         }  
         else{  
             //show error message  
-            System.out.println("Please enter valid username and password");  
+            System.out.println("Please enter valid username and password");
+            NewPage page = new NewPage();
+
+            //make page visible to the user
+            page.setVisible(true);
+
+            //create a welcome label and set it to the new page
+            JLabel wel_label = new JLabel("Please enter valid username and password");
+            page.getContentPane().add(wel_label);
         }  
     }
 
